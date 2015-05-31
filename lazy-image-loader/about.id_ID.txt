@@ -1,0 +1,10 @@
+Title: Pemuat Gambar Malas
+Author: Taufik Nurrohman
+URL: http://latitudu.com
+Version: 1.0.0
+
+====
+
+> Membuat antrean proses memuat gambar berdasarkan aksi menggulung pada layar.
+
+Lakukan proses pemuatan gambar hanya jika gambar tersebut berada dalam area yang tampak pada pandangan pengguna di dalam _viewport_.

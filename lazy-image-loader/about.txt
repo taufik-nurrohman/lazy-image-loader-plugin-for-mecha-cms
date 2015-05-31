@@ -1,0 +1,10 @@
+Title: Lazy Image Loader
+Author: Taufik Nurrohman
+URL: http://latitudu.com
+Version: 1.0.0
+
+====
+
+> Line up the image loading process by window sroll event.
+
+Loading image only when the image is displayed within the visible area in the viewport.
