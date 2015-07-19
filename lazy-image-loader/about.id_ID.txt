@@ -1,10 +1,36 @@
 Title: Pemuat Gambar Malas
 Author: Taufik Nurrohman
 URL: http://latitudu.com
-Version: 1.0.0
+Version: 1.1.0
 
 ====
 
 > Membuat antrean proses memuat gambar berdasarkan aksi menggulung pada layar.
 
 Lakukan proses pemuatan gambar hanya jika gambar tersebut berada dalam area yang tampak pada pandangan pengguna di dalam _viewport_.
+
+#### Penggunaan
+
+Tambahkan kelas `lazy` pada gambar yang ingin Anda pramuat.
+
+##### Sebagai Markdown
+
+~~~ .markdown
+![gambar](http://example.com/gambar.jpg) {.lazy}
+~~~
+
+##### Sebagai HTML
+
+~~~ .html
+<img class="lazy" alt="gambar" src="http://example.com/gambar.jpg">
+~~~
+
+---
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+  <input name="cmd" type="hidden" value="_s-xclick">
+  <input name="hosted_button_id" type="hidden" value="TNVGH7NQ7E4EU">
+  <input name="submit" type="image" class="help" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="PayPal &ndash; The safer, easier way to pay online!" title="Menggunakan proyek kode sumber terbuka itu sangatlah menyenangkan dan murah, akan tetapi kita juga perlu biaya untuk memelihara dan menjaga mereka tetap ada di &lt;code&gt;www&lt;/code&gt;."><img alt="" src="https://www.paypalobjects.com/id_ID/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+*[HTML]: Hyper Text Markup Language

@@ -1,6 +1,6 @@
 <?php
 
-if( ! isset($_GET['js']) || isset($_GET['js']) && (int) $_GET['js'] > 0) {
+if( ! isset($_GET['js']) || (int) $_GET['js'] > 0) {
 
     // Redirect to `?js=0` if JavaScript is disabled
     Weapon::add('meta', function() use($config) {
@@ -11,14 +11,19 @@ if( ! isset($_GET['js']) || isset($_GET['js']) && (int) $_GET['js'] > 0) {
 
     // Include the lazy image loader plugin
     Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
-        echo Asset::javascript('cabinet/plugins/' . basename(__DIR__) . '/sword/lazy-image-loader.js');
+        echo Asset::javascript('cabinet/plugins/' . basename(__DIR__) . '/assets/sword/lazy-image-loader.js');
     });
 
     // Replace `src` attribute with `data-src` on images
     Filter::add('sanitize:output', function($content) {
-        if(strpos($content, '<img ') === false) return $content;
-        return preg_replace_callback('#(?<!<noscript>)\s*<img\s(.*?)(\s*\/?)>\s*(?!<\/noscript>)#', function($matches) {
-            return '<img ' . preg_replace('#(^|\s)src=([\'"]?)#', '$1src=$2data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7$2 data-src=$2', $matches[1]) . $matches[2] . '>';
+        if( ! Text::check($content)->has('<img ')) {
+            return $content;
+        }
+        return preg_replace_callback('#<img\s(.*?)(\s*\/?)>#', function($matches) {
+            if(Text::check('"lazy"', '"lazy ', ' lazy ', ' lazy"')->in($matches[1])) {
+                return '<img ' . preg_replace('#(^|\s)src=([\'"]?)#', '$1src=$2data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7$2 data-src=$2', $matches[1]) . $matches[2] . '>';
+            }
+            return '<img ' . $matches[1] . $matches[2] . '>';
         }, $content);
     });
 
