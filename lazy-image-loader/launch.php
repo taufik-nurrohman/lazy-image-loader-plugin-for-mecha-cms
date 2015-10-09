@@ -20,7 +20,7 @@ if( ! isset($_GET['js']) || (int) $_GET['js'] > 0) {
             return $content;
         }
         return preg_replace_callback('#<img\s(.*?)(\s*\/?)>#', function($matches) {
-            if(Text::check('"lazy"', '"lazy ', ' lazy ', ' lazy"')->in($matches[1])) {
+            if(Text::check(' class="lazy"', ' class="lazy ', ' lazy ', ' lazy"')->in(' ' . $matches[1])) {
                 return '<img ' . preg_replace('#(^|\s)src=([\'"]?)#', '$1src=$2data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7$2 data-src=$2', $matches[1]) . $matches[2] . '>';
             }
             return '<img ' . $matches[1] . $matches[2] . '>';
